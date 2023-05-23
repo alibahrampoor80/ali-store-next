@@ -1,16 +1,12 @@
 import Link from "next/link";
 import Layout from "@/containers/Layout";
-import {useAuth} from "@/context/AuthContext";
-
-
 import "react-datepicker/dist/react-datepicker.css";
+import {useSelector} from "react-redux";
 
 
 const HomePage = () => {
-
-
-    const user = useAuth()
-    console.log(user)
+    const userInfo = useSelector(state => state.userSignin)
+    const {user,loading} = userInfo
     return <>
         <Layout>
             <h1 className={'font-bold text-4xl'}>index page</h1>

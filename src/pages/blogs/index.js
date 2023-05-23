@@ -3,12 +3,9 @@ import PostList from "@/components/posts/PostList";
 import CategoryMobile from "@/components/posts/CategoryMobile";
 import SortBar from "@/components/posts/SortBar";
 import CategoryDesktop from "@/components/posts/CategoryDesktop";
-import {baseUrl} from "../../../app/constants/api";
 import Layout from "@/containers/Layout";
 import http from "../../services/httpService";
 import querystring from "querystring";
-import Pagination from '@mui/material/Pagination';
-import {useRouter} from "next/router";
 import PaginationComponents from "@/common/Pagination";
 
 export default function Home({blogsData, postCategory}) {

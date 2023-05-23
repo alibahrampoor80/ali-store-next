@@ -46,4 +46,4 @@ const SortBar = () => {
         </div>
     </>
 }
-    export default SortBar
+export default SortBar

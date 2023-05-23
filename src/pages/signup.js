@@ -6,8 +6,10 @@ import Head from "next/head";
 import Layout from "@/containers/Layout";
 
 import React, {useEffect} from "react";
-import {useAuth, useAuthActions} from "@/context/AuthContext";
+
 import {useRouter} from "next/router";
+import {useDispatch, useSelector} from "react-redux";
+import {userSignin, userSignup} from "../redux/user/userActions";
 
 
 //  initial values
@@ -39,18 +41,20 @@ const validationSchema = Yup.object({
 
 const SignupForm = () => {
     const router = useRouter()
-    const {loading, user} = useAuth()
 
     //  onSubmit
-    const dispatch = useAuthActions()
+    const userInfo = useSelector(state => state.userSignup)
+    const {user, loading} = userInfo
+    const dispatch = useDispatch()
     const onSubmit = (values) => {
-        console.log(values)
+        console.log(user)
         const {name, email, phoneNumber, password} = values;
-        dispatch({type: 'SIGNUP', payload: {name, email, phoneNumber, password}})
+        dispatch(userSignup({name, email, phoneNumber, password}))
     };
     useEffect(() => {
         if (user) router.push('/')
     }, [user])
+
     const formik = useFormik({
         initialValues,
         onSubmit,

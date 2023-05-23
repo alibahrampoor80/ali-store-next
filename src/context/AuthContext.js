@@ -1,5 +1,4 @@
 import {createContext, useContext, useEffect} from "react";
-import axios from "axios";
 import toast from "react-hot-toast";
 
 import Router from "next/router";
@@ -21,11 +20,8 @@ const reducer = (state, action) => {
             return {error: action.error, loading: false, user: null}
         default :
             return {...state};
-
-
     }
 }
-
 
 const asyncActionHandlers = {
 
@@ -61,7 +57,6 @@ const asyncActionHandlers = {
                 .then(({data}) => {
 
                     dispatch({type: 'SIGNIN_SUCCESS', payload: data})
-
                 }).catch((err) => {
                 dispatch({type: 'SIGNIN_REJECT', error: err?.response?.data?.message})
 

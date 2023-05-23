@@ -1,5 +1,3 @@
-import axios from "axios";
-import {baseUrl} from "../../../../app/constants/api";
 import {BookmarkIcon, LinkIcon} from "@heroicons/react/24/outline";
 import {BookmarkIcon as SolideBookmarkIcon} from "@heroicons/react/24/outline";
 import Link from "next/link";

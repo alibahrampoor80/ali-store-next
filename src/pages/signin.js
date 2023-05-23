@@ -7,6 +7,8 @@ import Link from "next/link";
 import Input from "@/components/FormInput";
 import {useRouter} from "next/router";
 import {useAuth, useAuthActions} from "@/context/AuthContext";
+import {useDispatch, useSelector} from "react-redux";
+import {userSignin} from "../redux/user/userActions";
 
 const RegisterForm = () => {
     const router = useRouter()
@@ -23,13 +25,12 @@ const RegisterForm = () => {
             .required("رمز عبور را وارد کنید")
             .min(8, "رمز عبور باید حداقل شامل 8 کارارکتر باشد"),
     });
-    const dispatch = useAuthActions()
+    const dispatch = useDispatch()
     const onSubmit = (values) => {
-        dispatch({type: 'SIGNIN', payload: values})
-        const {email, password} = values
+        dispatch(userSignin(values))
     };
-    const {loading, user} = useAuth()
-
+    const userInfo = useSelector(state => state.userSignin)
+    const {user} = userInfo
     const formik = useFormik({
         initialValues,
         onSubmit,
